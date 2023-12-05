@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cupcake Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="img/favicon.png" sizes="16x16">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cupcake Store</h1>
+      <nav class="menu menu-3">
+        <ul>
+          <li><a href="main.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <section class="menu">
+      <h2>Cardápio</h2>
+        <br /> 
+    <p>
+      <div class="item">
+        <img src="img/cupcake-chocolate.jpg" alt="Cupcake de Chocolate">
+        <div class="info">
+          <h3>Cupcake de Chocolate</h3>
+          <p>Delicioso cupcake de chocolate, indulgente e irresistível.</p>
+          <p id="valorprd">R$ 10,00</p>
+          <button onclick="adicionarAoCarrinho('chocolate')">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/cupcake-caipirinha.jpg" alt="Cupcake de Caipirinha">
+        <div class="info">
+          <h3>Cupcake de Caipirinha</h3>
+          <p>Cupcake refrescante com toque cítrico de limão, leve e delicioso.</p>
+          <p id="valorprd">R$ 8,00</p>
+          <button onclick="adicionarAoCarrinho('limao')">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/cupcake-especial.jpg" alt="Cupcake Especial">
+        <div class="info">
+          <h3>Cupcake Especial</h3>
+          <p>Clássico cupcake de baunilha, suave e reconfortante.</p>
+          <p id="valorprd">R$ 12,00</p>
+          <button onclick="adicionarAoCarrinho('especial')">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </p>
+    </section>
+
+    <section class="carrinho">
+        <h2>Carrinho</h2>
+        <ul id="carrinho-lista">
+        </ul>
+        <p id="total">Total: R$ <span id="total-valor">0.00</span></p>
+ 
+        <label for="nomeCliente">Nome:</label>
+        <input type="text" id="nomeCliente" class="form_input" placeholder="Nome" required maxlength="40" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"/>
+        
+        <label for="telefoneCliente">Telefone:</label>
+        <input type="tel" id="telefoneCliente" pattern="[0-9]+" class="form_input" placeholder="(99) 99999-9999" required maxlength="15" onkeyup="handlePhone(event)"/>        
+        
+        <label for="observacao">Observação:</label>
+        <textarea id="observacao" rows="1" cols="50" class="form_input" placeholder="Digite sua observacao aqui..." maxlength="100"></textarea>
+        
+        <div class="selecaoEntrega">
+        <input type="radio" name="opcaoEntrega" id="entregaLoja" value="loja" checked="checked">
+        <label for="entregaLoja">Retirada em Loja</label>
+        
+        <input type="radio" name="opcaoEntrega" id="entregaEndereco" value="endereco">
+        <label for="entregaEndereco">Receba em casa</label>
+        </div>
+        
+        <div id="dadosEntrega">
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" class="form_input" placeholder="Rua Abc" maxlength="50">
+        
+          <label for="numero">Número:</label>
+          <input type="text" id="numero" class="form_input" placeholder="000" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8"/>
+        
+          <label for="cep">CEP:</label>
+          <input type="text" id="cep" pattern= "\d{5}-?\d{3}" maxlength="8" class="form_input" placeholder="99999-999" onkeyup="validaCEP(event)">
+        
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" class="form_input" placeholder="Cidade" maxlength="20" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"/>
+        
+          <label for="uf">UF:</label>
+          <input type="text" id="uf" maxlength="2" class="form_input" placeholder="UF" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');" style="text-transform: uppercase;"/>
+        
+          <label for="complemento">Complemento:</label>
+          <input type="text" id="complemento" class="form_input" placeholder="Complemento" maxlength="30"/>
+        </div>
+        <br>
+        <button id="limparCarrinho" onclick="limparCarrinho()">Limpar Carrinho</button>
+        <button id="finalizarpedido" onclick="finalizarPedido()">Finalizar Pedido</button>
+      </section>
+      
+  </main>
+  <footer>
+    <p>&copy; 2023 Cupcake Store</p>
+</footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
