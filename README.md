@@ -1,1 +1,1 @@
-# e-commercePIT
+# Atividade Projeto Integrador
